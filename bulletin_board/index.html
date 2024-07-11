@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEULBO 게시판</title>
+    <link rel = "stylesheet" href = "./style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <img src="images/logo.jpg" alt="logo">
+                <div class="title">NEULBO</div>
+            </div>
+            <div class="board-title">게시판</div>
+        </header>
+        <div class="posts" id="posts">
+            <div class="post">
+                <div class="nickname">닉네임 : 오늘 수면 12시간 ㅋㅋ</div>
+                <div class="details">
+                    <img src="images/good.jpg" alt="공감"> 6개, 
+                    <img class="comment-icon" src="images/talk.jpg" alt="댓글"> 2개
+                </div>
+            </div>
+            <div class="post">
+                <div class="nickname">닉네임 : 안 자는 사람?</div>
+                <div class="details">
+                    <img src="images/good.jpg" alt="공감"> 10개, 
+                    <img class="comment-icon" src="images/talk.jpg" alt="댓글"> 12개
+                </div>
+            </div>
+            <div class="post">
+                <div class="nickname">닉네임 : 아유 그냥 자지마</div>
+                <div class="details">
+                    <img src="images/good.jpg" alt="공감"> 20개, 
+                    <img class="comment-icon" src="images/talk.jpg" alt="댓글"> 10개
+                </div>
+            </div>
+            <div class="post">
+                <div class="nickname">닉네임 : 빨리 잠드는 꿀팁 좀</div>
+                <div class="details">
+                    <img src="images/good.jpg" alt="공감"> 3개, 
+                    <img class="comment-icon" src="images/talk.jpg" alt="댓글"> 5개
+                </div>
+            </div>
+            <div class="write-post" onclick="navigateToWritePage()">글쓰기</div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
