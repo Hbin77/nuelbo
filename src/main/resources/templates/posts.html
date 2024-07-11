@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Posts</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<header>
+    <h1>Posts</h1>
+</header>
+<div class="container">
+    <a href="/posts/new">Create New Post</a>
+    <ul>
+        <li th:each="post : ${posts}">
+            <a th:href="@{/posts/{id}(id=${post.id})}" th:text="${post.title}">Post Title</a>
+            <p th:text="${post.author}">Post Author</p>
+            <button th:href="@{/posts/delete/{id}(id=${post.id})}" class="delete-button">Delete</button>
+        </li>
+    </ul>
+</div>
+<script th:src="@{/js/scripts.js}"></script>
+</body>
+</html>
