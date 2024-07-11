@@ -34,7 +34,7 @@ function loadPosts() {
         details.className = 'details';
 
         var likeImg = document.createElement('img');
-        likeImg.src = './good.jpg'; 
+        likeImg.src = 'images/good.jpg'; 
         likeImg.alt = '공감';
         details.appendChild(likeImg);
 
@@ -44,7 +44,7 @@ function loadPosts() {
 
 
         var commentImg = document.createElement('img');
-        commentImg.src = './talk.jpg';
+        commentImg.src = 'images/talk.jpg';
         commentImg.alt = '댓글';
         details.appendChild(commentImg);
 
