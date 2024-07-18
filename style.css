@@ -34,7 +34,7 @@ header {
     border-radius: 50%;
 }
 
-.main-title {
+.title {
     font-size: 24px;
     color: #688EF8;
     font-weight: bold;
@@ -61,8 +61,8 @@ header {
 }
 
 .nickname {
-    font-size: 13px;
-    margin-bottom: 3px;
+    font-size: 16px;
+    margin-bottom: 10px;
 }
 
 .details {
@@ -102,26 +102,12 @@ header {
     margin: 20px 0;
 }
 
-.new-post-form label {
-    display: block;
-    margin: 10px 0 5px;
-}
-
-.new-post-form input,
 .new-post-form textarea {
     width: 96.5%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.new-post-form input {
-    height: 40px;
-}
-
-.new-post-form textarea {
     height: 100px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
     resize: none;
 }
 
@@ -133,3 +119,64 @@ header {
     border-radius: 5px;
     cursor: pointer;
 }
+
+.like-button {
+    
+    display: inline-block;
+    padding: 10; 
+    border: none; 
+    background: none; 
+    border-radius: 50%; 
+    width: 30px; 
+    height: 30px; 
+    margin-top: 5px;
+}
+
+.like-button img {
+    width: 15px; 
+    height: 15px; 
+}
+
+
+.like-button:hover {
+    opacity: 0.8;
+}
+
+
+.like-button:active {
+    transform: scale(0.9);
+}
+
+.report-button {
+    display: inline-block;
+    padding: 5px 10px;
+    margin-left: auto; 
+    border: none;
+    background: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: red;
+    font-size: 12px;}
+
+    .report-button img {
+        width: 15px; 
+        height: 15px; 
+    }
+    
+   
+    .report-button:hover {
+        opacity: 0.8;
+    }
+    
+    
+    .report-button:active {
+        transform: scale(0.9);
+    }
+
+    .details {
+        font-size: 14px;
+        color: #555;
+        display: flex;
+        align-items: center;
+        justify-content: space-between; 
+    }
