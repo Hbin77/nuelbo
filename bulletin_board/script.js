@@ -1,5 +1,5 @@
 function navigateToWritePage() {
-    window.location.href = 'write.html';
+    window.location.href = './write.html';
 }
 
 function submitPost() {
@@ -12,10 +12,10 @@ function submitPost() {
     }
 
     var posts = JSON.parse(localStorage.getItem('posts')) || [];
-    posts.unshift({ title: title, content: content, likes: 0, liked: false });
+    posts.push({ title: title, content: content, likes: 0, liked: false });
     localStorage.setItem('posts', JSON.stringify(posts));
 
-    window.location.href = 'index.html';
+    window.location.href = './index.html';
 }
 
 function createPostElement(post, index) {
@@ -42,8 +42,12 @@ function createPostElement(post, index) {
     likeButton.type = 'button';
     likeButton.setAttribute('aria-label', '좋아요');
     likeButton.setAttribute('data-index', index);
-    likeButton.onclick = function() { incrementLike(this); };
-    likeButton.innerHTML = '<i class="fa-regular fa-thumbs-up"></i>'; // Font Awesome 아이콘 사용
+    likeButton.onclick = function() { incrementLike(index); };
+
+    var likeImg = document.createElement('img');
+    likeImg.src = 'images/good.jpg';
+    likeImg.alt = '공감';
+    likeButton.appendChild(likeImg);
 
     var likeCount = document.createElement('span');
     likeCount.className = 'like-count';
@@ -52,9 +56,9 @@ function createPostElement(post, index) {
     details.appendChild(likeButton);
     details.appendChild(likeCount);
 
-    var commentImg = document.createElement('span');
-    commentImg.className = 'comment-icon';
-    commentImg.innerHTML = '<i class="fa-regular fa-comment"></i>'; // 댓글 아이콘 사용
+    var commentImg = document.createElement('img');
+    commentImg.src = 'images/talk.jpg';
+    commentImg.alt = '댓글';
     details.appendChild(commentImg);
 
     var commentCount = document.createElement('span');
@@ -66,8 +70,11 @@ function createPostElement(post, index) {
     reportButton.type = 'button';
     reportButton.setAttribute('aria-label', '신고하기');
     reportButton.onclick = function() { reportPost(index); };
-    reportButton.innerHTML = '<i class="fa-regular fa-flag"></i>'; // 신고 아이콘 사용
-    details.appendChild(reportButton); // 신고 버튼 추가
+    var reportImg = document.createElement('img');
+    reportImg.src = 'images/report.jpg';
+    reportImg.alt = '신고';
+    reportButton.appendChild(reportImg);
+    details.appendChild(reportButton);
 
     newPost.appendChild(nickname);
     newPost.appendChild(titleDiv);
@@ -77,15 +84,59 @@ function createPostElement(post, index) {
     return newPost;
 }
 
-function loadPosts() {
+function loadPosts(page = 1) {
     var posts = JSON.parse(localStorage.getItem('posts')) || [];
     var postsContainer = document.getElementById('posts');
+    var paginationContainer = document.getElementById('pagination');
 
     postsContainer.innerHTML = '';
-    posts.forEach(function(post, index) {
-        var newPost = createPostElement(post, index);
-        postsContainer.appendChild(newPost); // 새로운 게시물을 위로 추가
+    paginationContainer.innerHTML = '';
+
+    var postsPerPage = 10;
+    var start = (page - 1) * postsPerPage;
+    var end = start + postsPerPage;
+    var paginatedPosts = posts.slice(start, end);
+
+    paginatedPosts.forEach(function(post, index) {
+        var newPost = createPostElement(post, start + index);
+        postsContainer.appendChild(newPost);
     });
+
+    var totalPages = Math.ceil(posts.length / postsPerPage);
+
+    var prevButton = document.createElement('button');
+    prevButton.innerHTML = '&#9664;'; // Left arrow
+    prevButton.className = 'arrow';
+    if (page === 1) {
+        prevButton.classList.add('disabled');
+    } else {
+        prevButton.onclick = function() { loadPosts(page - 1); };
+    }
+    paginationContainer.appendChild(prevButton);
+
+    for (var i = 1; i <= totalPages; i++) {
+        var pageButton = document.createElement('button');
+        pageButton.innerText = i;
+        if (i === page) {
+            pageButton.style.fontWeight = 'bold';
+        }
+        pageButton.onclick = (function(page) {
+            return function() {
+                loadPosts(page);
+            };
+        })(i);
+        paginationContainer.appendChild(pageButton);
+    }
+
+    var nextButton = document.createElement('button');
+    nextButton.innerHTML = '&#9654;'; // Right arrow
+    nextButton.className = 'arrow';
+    if (page === totalPages) {
+        nextButton.classList.add('disabled');
+    } else {
+        nextButton.onclick = function() { loadPosts(page + 1); };
+    }
+    paginationContainer.appendChild(nextButton);
 }
 
 if (window.location.pathname.endsWith('index.html')) {
@@ -111,5 +162,5 @@ function incrementLike(button) {
 }
 
 function reportPost(index) {
-    alert('게시물 ' + index + '을(를) 신고했습니다.');
+    alert('게시물 ' + index + '신고하시겠습니까?');
 }
