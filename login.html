@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소셜 로그인</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <img src="images/logo.jpg" alt="logo">
+                <div class="main-title">NEULBO</div>
+            </div>
+            <div class="board-title">소셜 로그인</div>
+        </header>
+        <div class="login-form">
+            <button id="googleLogin" class="login-button">구글 아이디로 로그인</button>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
+        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCoLFHO6brGuD2jLCD3-IZb1yWcTm5OWPs",
+            authDomain: "neulbo-915ae.firebaseapp.com",
+            databaseURL: "https://neulbo-915ae-default-rtdb.firebaseio.com",
+            projectId: "neulbo-915ae",
+            storageBucket: "neulbo-915ae.appspot.com",
+            messagingSenderId: "889846027815",
+            appId: "1:889846027815:web:184cf98b5ca3051ead6002",
+            measurementId: "G-PKXGSVBCLT"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+        const db = getFirestore(app);
+        const provider = new GoogleAuthProvider();
+
+        document.getElementById('googleLogin').addEventListener('click', () => {
+            signInWithPopup(auth, provider)
+                .then(async (result) => {
+                    const user = result.user;
+                    const token = await user.getIdToken();
+                    localStorage.setItem('userToken', token);
+                    localStorage.setItem('user', JSON.stringify(user));
+
+                    // Firestore에 사용자 정보 저장
+                    await setDoc(doc(db, "users", user.uid), {
+                        uid: user.uid,
+                        email: user.email,
+                        displayName: user.displayName,
+                        photoURL: user.photoURL,
+                        token: token
+                    });
+
+                    // 앱으로 토큰 전달
+                    window.location.href = `myapp://login?token=${token}`;
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        });
+    </script>
+</body>
+</html>
+
