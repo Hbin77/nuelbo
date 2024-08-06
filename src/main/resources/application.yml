@@ -1,0 +1,21 @@
+# database
+
+firebase:
+    project-id: "neulbo-915ae"
+    service:
+        account:
+            path:
+                "src/main/resources/firebase/neulbo-915ae-firebase-adminsdk-pdtbn-ebd83307a4.json"
+
+spring:
+    thymeleaf:
+        prefix: classpath:/templates/
+        suffix: .html
+        mode: HTML5
+        cache: false
+    mvc:
+        view:
+            resolver:
+                content-type: text/html#server
+server:
+    port: 8082
