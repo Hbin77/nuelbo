@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "889846027815",
+    "firebase_url": "https://neulbo-915ae-default-rtdb.firebaseio.com",
+    "project_id": "neulbo-915ae",
+    "storage_bucket": "neulbo-915ae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889846027815:android:53577288328e5e8ead6002",
+        "android_client_info": {
+          "package_name": "com.example.NeulBo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "889846027815-qbfnb0v0blfp7fcr50nn3b74utsntpot.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbaUdulm5iWgbF6rSjcbw_qSOCEFt2YE8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "889846027815-qbfnb0v0blfp7fcr50nn3b74utsntpot.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "889846027815-15b0fmtch77dsitmfjt40qug8bf2dr1e.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.NeulBo2"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889846027815:android:23f0342280dce655ad6002",
+        "android_client_info": {
+          "package_name": "com.example.neulbo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "889846027815-qbfnb0v0blfp7fcr50nn3b74utsntpot.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbaUdulm5iWgbF6rSjcbw_qSOCEFt2YE8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "889846027815-qbfnb0v0blfp7fcr50nn3b74utsntpot.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "889846027815-15b0fmtch77dsitmfjt40qug8bf2dr1e.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.NeulBo2"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
