@@ -16,13 +16,11 @@
         <div class="board-title">글쓰기</div>
     </header>
     <div class="new-post-form">
-        <form id="newPostForm" method="post">
-            <label for="newPostTitle">제목</label>
-            <input type="text" id="newPostTitle" placeholder="제목을 입력하세요">
-            <label for="newPostContent">내용</label>
-            <textarea id="newPostContent" placeholder="글을 작성하세요"></textarea>
-            <button type="submit">올리기</button>
-        </form>
+        <label for="newPostTitle">제목</label>
+        <input type="text" id="newPostTitle" placeholder="제목을 입력하세요">
+        <label for="newPostContent">내용</label>
+        <textarea id="newPostContent" placeholder="글을 작성하세요"></textarea>
+        <button onclick="submitPost()">올리기</button>
     </div>
 </div>
 <script type="module">
